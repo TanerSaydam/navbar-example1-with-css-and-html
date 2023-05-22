@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,15 @@
     <title>Responsive Navbar HTML & CSS</title>
     <style>
         @import url('https://fonts.cdnfonts.com/css/open-sans');
-        *{
+
+        * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
             font-family: 'Open Sans', sans-serif;
         }
 
-        body{
+        body {
             height: 100vh;
             background-color: #000;
             background: url("./background.jpg");
@@ -22,26 +24,24 @@
             background-position: center;
         }
 
-        .nav-link li, .dropdown-menu li{
+        .nav-link li,
+        .dropdown-menu li {
             list-style: none;
         }
 
-        a{
+        a {
             color: #fff;
             text-decoration: none;
             font-size: 1rem;
         }
-       
-        a:hover{
+
+        a:hover {
             color: orange;
         }
 
-        header{
+        .navbar {
             position: relative;
             padding: 0 2rem;
-        }
-
-        .navbar{            
             width: 100%;
             height: 60px;
             max-width: 1200px;
@@ -50,18 +50,40 @@
             justify-content: space-between;
         }
 
-       
-        .navbar .logo a{
+
+        .navbar .logo a {
             font-size: 1.5rem;
             font-weight: bold;
         }
 
-        .navbar .nav-link{
+        .navbar .nav-link {
             display: flex;
             gap: 2rem;
         }
 
-        .action-btn{
+        .navbar ul li {
+            position: relative;
+        }
+
+        .navbar ul li a:before {
+            position: absolute;
+            content: '';
+            left: 0;            
+            top: 0;
+            height: 3px;
+            width: 100%;
+            background: #fff;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s linear;
+        }
+        
+        .navbar ul li a:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .action-btn {
             background-color: orange;
             color: #fff;
             padding: 0.5rem 1rem;
@@ -73,21 +95,21 @@
             transition: scale 0.2 ease;
         }
 
-        .action-btn:hover{
+        .action-btn:hover {
             scale: 1.05;
             color: #fff;
         }
 
-        .action-btn:active{
+        .action-btn:active {
             scale: 0.95;
         }
 
-        .toggle-btn{
+        .toggle-btn {
             display: none;
             cursor: pointer;
         }
-        
-        .bar{
+
+        .bar {
             display: block;
             width: 25px;
             height: 3px;
@@ -96,8 +118,8 @@
             background-color: #fff;
         }
 
-        .dropdown-menu{
-            display: none;            
+        .dropdown-menu {
+            display: none;
             position: absolute;
             right: 2rem;
             height: 0;
@@ -110,37 +132,37 @@
             transition: height .2s ease;
         }
 
-        .dropdown-menu li{
+        .dropdown-menu li {
             padding: 0.7rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .dropdown-menu .action-btn{
+        .dropdown-menu .action-btn {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .dropdown-menu.open{
+        .dropdown-menu.open {
             height: 240px;
         }
 
-        .toggle-btn.active .bar:nth-child(1){
+        .toggle-btn.active .bar:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
 
-        .toggle-btn.active .bar:nth-child(2){
+        .toggle-btn.active .bar:nth-child(2) {
             opacity: 0;
         }
 
-        .toggle-btn.active .bar:nth-child(3){
+        .toggle-btn.active .bar:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        section#home{
+        section#home {
             height: calc(100vh - 60px);
             display: flex;
             flex-direction: column;
@@ -150,52 +172,55 @@
             color: #fff;
         }
 
-        #home h1{
+        #home h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        @media screen and (max-width:992px) {
+        /* @media screen and (max-width:992px) {
+
             .navbar .nav-link,
-            .navbar .action-btn{
+            .navbar .action-btn {
                 display: none;
             }
 
-            .navbar .toggle-btn{
+            .navbar .toggle-btn {
                 display: block;
             }
 
-            .dropdown-menu{
+            .dropdown-menu {
                 display: block;
             }
-        }    
-        
+        }
+
         @media screen and (max-width:570px) {
-            .dropdown-menu{
+            .dropdown-menu {
                 left: 2rem;
                 width: unset;
             }
-        }
+        } */
     </style>
 </head>
-<body>   
-    <header>   
+
+<body>
+    <!-- Navbar -->
+    <div>
         <nav class="navbar">
             <div class="logo">
                 <a href="#">Logo</a>
             </div>
-    
+
             <ul class="nav-link">
-                <li>
+                <li class="item">
                     <a href="#">Home</a>
                 </li>
-                <li>
+                <li class="item">
                     <a href="#">About</a>
                 </li>
-                <li>
+                <li class="item">
                     <a href="#">Service</a>
                 </li>
-                <li>
+                <li class="item">
                     <a href="#">Contact</a>
                 </li>
             </ul>
@@ -214,24 +239,28 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="#" class="action-btn">Get Started</a></li>
         </div>
-    </header> 
+    </div>
 
+    <!-- Content -->
     <main>
         <section id="home">
             <h1>Welcome</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat vitae excepturi hic quis culpa aliquid, ex voluptates omnis quia sapiente atque deleniti magni tempora aspernatur natus deserunt saepe ut aliquam?</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat vitae excepturi hic quis culpa
+                aliquid, ex voluptates omnis quia sapiente atque deleniti magni tempora aspernatur natus deserunt saepe
+                ut aliquam?</p>
         </section>
     </main>
-    
+
 
     <script>
         const toggleBtn = document.querySelector(".toggle-btn");
         const dropdownMenu = document.querySelector(".dropdown-menu");
 
-        toggleBtn.onclick = function(){
+        toggleBtn.onclick = function () {
             dropdownMenu.classList.toggle("open");
             toggleBtn.classList.toggle("active");
         }
     </script>
 </body>
+
 </html>
